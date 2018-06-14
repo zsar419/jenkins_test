@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'docker run --rm -p 8081:8080 -t tomcatserver'
+                sh 'mvn -v'
             }
         }
     }

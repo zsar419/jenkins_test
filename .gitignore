@@ -14,7 +14,7 @@
 .idea/
 
 # OS
-.DS_STORE
+.DS_Store
 
 # Dir
 target/

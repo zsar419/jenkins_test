@@ -9,7 +9,8 @@ pipeline {
         stage('Test-Env') {
             steps {
                 sh 'java -version'
-            }
+            },
+
             steps {
                 sh 'mvn -B -DskipTests clean package'
             }

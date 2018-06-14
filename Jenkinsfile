@@ -1,19 +1,9 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3-alpine'
-            args '-v /root/.m2:/root/.m2'
-        }
-    }
+    agent { dockerfile true }
     stages {
-        stage('Build') {
+        stage('Test') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
-            }
-        }
-        stage('Deliver') {
-            steps {
-                sh 'java -jar target/*.jar'
+                sh 'docker run --rm -p 8081:8080 -t tomcatserver'
             }
         }
     }

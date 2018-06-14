@@ -1,29 +1,21 @@
 pipeline {
     agent {
-        docker {
-            image 'maven:3-alpine'
-            args '-p 8081:8081 -v /root/.m2:/root/.m2'
-        }
+        agent { dockerfile true }
     }
     stages {
-        stage('Test-MVN') {
-            steps {
-                sh 'mvn -v'
-            }
-        }
         stage('Test-Java') {
             steps {
                 sh 'java -version'
             }
         }
+        stage('Test-MVN') {
+            steps {
+                sh 'mvn -v'
+            }
+        }
         stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
-            }
-        }
-        stage('Deliver') {
-            steps {
-                sh './scripts/deliver.sh'
             }
         }
     }

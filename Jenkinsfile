@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Test-MVN') {
             steps {
-                sh 'java -version'
+                sh 'mvn -v'
             }
         }
         stage('Test-Java') {
